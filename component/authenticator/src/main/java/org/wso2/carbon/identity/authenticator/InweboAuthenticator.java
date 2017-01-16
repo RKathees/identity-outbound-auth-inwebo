@@ -82,8 +82,8 @@ public class InweboAuthenticator extends AbstractApplicationAuthenticator implem
             if (context.isRetrying()) {
                 retryParam = InweboConstants.RETRY_PARAM;
             }
-            response.sendRedirect(response.encodeRedirectURL(loginPage + "?" + FrameworkConstants.SESSION_DATA_KEY + "="
-                            + context.getContextIdentifier()+retryParam));
+            response.sendRedirect(loginPage + "?" + FrameworkConstants.SESSION_DATA_KEY + "="
+                    + context.getContextIdentifier() + retryParam);
         } catch (IOException e) {
             throw new AuthenticationFailedException("Error while redirecting", e);
         }
@@ -202,6 +202,7 @@ public class InweboAuthenticator extends AbstractApplicationAuthenticator implem
             throw new AuthenticationFailedException("Required parameters are empty");
         }
     }
+
     @Override
     protected boolean retryAuthenticationEnabled() {
         return true;
